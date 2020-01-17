@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .product-container {
+            position: relative;
+        }
+
+        .product-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .product-content .item-view {
+            margin-bottom: 80px;
+        }
+
+        .product-content .item-title {
+            padding: 10px;
+            font-size: 20px;
+            width: 280px;
+        }
+
+        .product-content iframe {
+            border: 0px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 10px rgba(39, 39, 39, 0.438);
+            height: 100%;
+            width: 100%;
+            transition: 0.2s;
+            pointer-events: none;
+            background: #444;
+        }
+
+        .product-content iframe:hover {
+            transform: scale(1.04);
+            box-shadow: 0px 1px 14px rgba(24, 24, 24, 0.623);
+        }
+
+        .product-container .read-more-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px 14px;
+            background: transparent;
+            border: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .product-container .read-more-btn::after {
+            content: url("https://img.icons8.com/ios-glyphs/20/000000/double-right.png");
+            line-height: 0;
+            margin-left: 4px;
+        }
+
+        .experience-mode {
+            position: fixed;
+            top: 10vh;
+            right: 0;
+            bottom: 0;
+            left: 10vw;
+            width: 80vw;
+            z-index: 6;
+        }
+
+        .experience-mode iframe {
+            pointer-events: all;
+        }
+
+        .experience-mode iframe:hover {
+            transform: unset;
+        }
+
+        .experience-mode::before {
+            content: "";
+            background: rgba(0, 0, 0, 0.705);
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .experience-mode::after {
+            content: url("https://img.icons8.com/material/32/ffffff/close-window--v1.png");
+            position: absolute;
+            top: 4px;
+            right: 4px;
+        }
+    </style>
+
+    <script>
+        var product = [
+            {
+                title: "Quét không gian 3D",
+                items: [
+                    {
+                        name: "Sun Spa resource",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=x4xFU52bX8Y"
+                    },
+                    {
+                        name: "Động Thiên đường",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=qygLQmZmBE7"
+                    },
+                    {
+                        name: "TikTak CoWorking Space",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=7PjdMfrtHG8",
+                    },
+                    {
+                        name: "Biệt thự cao cấp",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=gNthTcw5SKr",
+                    },
+                    {
+                        name: "Đại học khoa học tự nhiên HN - Khoa Sinh",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=b4yFmeGRe62",
+                    },
+                    {
+                        name: "Đại học kinh tế quốc dân",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=JAQqHk5gKtR",
+                    },
+                    {
+                        name: "Đại học quốc gia Hà Nội - Nhà điều hành",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=3DCWEk9D1iw",
+                    },
+                    {
+                        name: "Trung tâm chuyển giao tri thức khởi nghiệp - DHQG",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=xNcdfKwNMqK",
+                    },
+                    {
+                        name: "TINA LE  ACADEMY MAQUILLAGE PARIS",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=613h1H4Am9P",
+                    },
+                    {
+                        name: "Bảo tàng Quảng Bình",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=eRT1QETcV8N",
+                    },
+                    {
+                        name: "Ecolife Tây Hồ",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=pLyMFR52avF",
+                    },
+                    {
+                        name: "Hoa Phuong No. 1 - 36 Vinhomes Riverside",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=rqZmh91ebgw",
+                    },
+                    {
+                        name: "Hoa Sua No. 10 - 58 Vinhomes Riverside",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=LEkYn8DGXLo",
+                    },
+                    {
+                        name: "Athena Suites  No. 18 Lane 28",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=Dyz1XpXkb2k",
+                    },
+                    {
+                        name: "Vườn Hoa Nhật Tân",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=2FdrbtqTbaY",
+                    },
+                    {
+                        name: "HOTEL ANH LINH 2",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=S8n5KQNHsVP",
+                    },
+                    {
+                        name: "Biệt thự Nghỉ dưỡng cao cấp",
+                        type: "iframe",
+                        content: "https://my.matterport.com/show/?m=MfNMzPe28bE",
+                    },
+                ]
+            }
+        ];
+
+        function loadItemView(item, parent) {
+            var itemElement = $(`<div class="item-view">`);
+            if (item.type === "iframe") {
+                var itemView = $(`<iframe src='${item.content}'/>`);
+                itemElement.append(itemView);
+                itemElement.append(`<div class='item-title'>${item.name}</div>`)
+            }
+            itemElement.click(function () {
+                if ($(this).hasClass("experience-mode"))
+                    $(this).removeClass("experience-mode");
+                else
+                    $(this).addClass("experience-mode");
+            });
+            itemElement.appendTo(parent);
+        }
+
+        function initProductPlace() {
+            var rootElement = $("#demo-product-place");
+            const MAX_ITEMS_VIEW = 4;
+            product.forEach(p => {
+                var productContainer = $(`<div class="product-container">`);
+                $(`<h3 class="product-title">${p.title}</h3>`).appendTo(productContainer);
+                var itemList = p.items;
+                var productContents = $(`<div class="product-content">`);
+                for (var i = 0; i < MAX_ITEMS_VIEW; i++) {
+                    loadItemView(itemList[i], productContents);
+                }
+                productContainer.append(productContents);
+                var readMoreBtn = $(`<button class="read-more-btn">Xem thêm</button>`);
+                readMoreBtn.click(() => {
+                    for (var i = MAX_ITEMS_VIEW; i < itemList.length - 1; i++) {
+                        loadItemView(itemList[i], productContents);
+                    }
+                })
+                productContainer.append(readMoreBtn);
+                productContainer.appendTo(rootElement);
+            });
+        }
+
+        $(document).ready(() => {
+            initProductPlace();
+        })
+    </script>
+
+    <div id="demo-product-place">
+    </div>
+</body>
+
+</html>

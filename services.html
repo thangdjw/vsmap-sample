@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Service</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: calibri;
+        }
+
+        .background {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+
+        }
+
+        .background img {
+            width: 100%;
+        }
+
+        .service-list {
+            position: fixed;
+            width: 60%;
+            height: 60%;
+            /* background: red; */
+            top: 20%;
+            left: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .service-item {
+            /* background: red; */
+            display: flex;
+            width: 120px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 20px
+        }
+
+        .service-item .item-image {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .service-item .item-title {
+            margin-top: 10px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 18px;
+            text-shadow: 0px 1px rgba(0, 0, 0, 0.678);
+        }
+
+        .item-image img {
+            width: 68%;
+            height: 68%;
+            filter: invert(1);
+        }
+
+        .service-item:hover .item-image {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.616);
+            transform: scale(1.16);
+        }
+    </style>
+</head>
+<body>
+    <div class="root-content">
+        <div class="background">
+            <img src="https://thedesignest.net/wp-content/uploads/2019/07/Blue-Yellow-Watercolor-Background.jpg"/>
+        </div>
+        <div class="service-list">
+            <div class="service-item">
+                <div class="item-image">
+                    <img src="https://image.flaticon.com/icons/svg/868/868045.svg"/>
+                </div>
+                <div class="item-title">
+                    đặt vé máy bay
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="item-image">
+                    <img src="https://image.flaticon.com/icons/svg/1042/1042286.svg"/>
+                </div>
+                <div class="item-title">
+                    đặt vé xe
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="item-image">
+                    <img src="https://image.flaticon.com/icons/svg/897/897359.svg"/>
+                </div>
+                <div class="item-title">
+                    Quà lưu niệm
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="item-image">
+                    <img src="https://image.flaticon.com/icons/svg/868/868045.svg"/>
+                </div>
+                <div class="item-title">
+                    Quyên góp
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
